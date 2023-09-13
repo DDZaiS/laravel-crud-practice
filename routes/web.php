@@ -19,5 +19,7 @@ Route::get("/search",[DemoController::class ,"search"])->name("search");
 
 Route::get('/',[DemoController::class,'index'])->name('root');
 
+Route::get('/{shortCode}', [DemoController::class, 'redirectToURL'])->name("short_url_redirect");
+
 
 

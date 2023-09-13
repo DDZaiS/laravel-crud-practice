@@ -71,6 +71,17 @@ class DemoController extends Controller
 
         return $shortCode;
     }
+    public function redirectToURL(Request $request, $shortCode){
+
+        $shortUrlRecord = Demo::where('short_url', $shortCode)->first();
+        if ($shortUrlRecord) {
+            // 執行重定向到長 URL
+            return redirect($shortUrlRecord['url']);
+        } else {
+            // 如果找不到相應的長 URL，可以執行一些錯誤處理邏輯，例如返回一個錯誤頁面或消息
+            return view('errors.short_url_not_found');
+        }
+    }
 
 
 

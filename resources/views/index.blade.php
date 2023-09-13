@@ -52,11 +52,11 @@
             @foreach($datas as $data)
                 <tr>
                     <td>{{ $data->created_at }}</td>
-                    <td><a href="{{ $data->url }}" target="_blank">{{ $data->short_url}}</a></td>
+                    <td><a href="{{ route('short_url_redirect', ['shortCode' => $data->short_url]) }}">{{$data->short_url}}</a></td>
                     <td>{{ $data->name }}</td>
                     <td>{{ $data->key }}</td>
                     <td>
-                        <a href="{{$data->url}}" target="_blank" class="btn btn-primary">進入</a>
+                        <a href="{{ route('short_url_redirect', ['shortCode' => $data->short_url]) }}" class="btn btn-primary">進入</a>
                         <a href="{{route('de.edit',$data)}}" class="btn btn-primary">修改</a>
                         <form action="{{ route('de.destroy', $data) }}" method="POST" style="display: inline-block;">
                             @csrf
